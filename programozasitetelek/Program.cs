@@ -59,6 +59,15 @@ namespace programozasitetelek
             return false;
         }
 
+        static int Megszamlalas(int[] tomb, int n)
+        {
+            int darab = 0;
+            for (int i = 0; i < tomb.Length; i++)
+                if (tomb[i] % n == 0)
+                    darab++;
+            return darab;
+        }
+
         static void Main(string[] args)
         {
             int[] szamok = new int[100];
@@ -71,6 +80,9 @@ namespace programozasitetelek
             Console.WriteLine("Adj két számot!");
             int oszto1 = int.Parse(Console.ReadLine());
             int oszto2 = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("{0} db {1}-vel osztható szám van a tömbben.", Megszamlalas(szamok, oszto1), oszto1);
+            Console.WriteLine("{0} db {1}-vel osztható szám van a tömbben.", Megszamlalas(szamok, oszto2), oszto2);
 
             if(VanEnnelEsMmelOszthato(szamok, oszto1, oszto2))
                 Console.WriteLine("Van a tömbben {0}-mal és {1}-val osztható szám.", oszto1, oszto2);
