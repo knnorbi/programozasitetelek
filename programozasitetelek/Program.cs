@@ -43,6 +43,14 @@ namespace programozasitetelek
             return false;
         }
 
+        static bool VanEnnelOszthao(int[] tomb, int n)
+        {
+            for (int i = 0; i < tomb.Length; i++)
+                if (tomb[i] % n == 0)
+                    return true;
+            return false;
+        }
+
         static void Main(string[] args)
         {
             int[] szamok = new int[100];
@@ -52,10 +60,13 @@ namespace programozasitetelek
                 szamok[i] = random.Next(1, 101);
             }
             TombKiir(szamok);
-            if(Eldontes(szamok))
-                Console.WriteLine("Van a tömbben 3-mal osztható szám.");
+            Console.WriteLine("Adj egy számot!");
+            int oszto = int.Parse(Console.ReadLine());
+
+            if(VanEnnelOszthao(szamok, oszto))
+                Console.WriteLine("Van a tömbben {0}-mal osztható szám.", oszto);
             else
-                Console.WriteLine("Nincs a tömbben hárommal osztható szám.");
+                Console.WriteLine("Nincs a tömbben {0}-mal osztható szám.", oszto);
 
             Console.ReadKey();
         }
