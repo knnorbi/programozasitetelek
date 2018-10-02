@@ -43,10 +43,18 @@ namespace programozasitetelek
             return false;
         }
 
-        static bool VanEnnelOszthao(int[] tomb, int n)
+        static bool VanEnnelOszthato(int[] tomb, int n)
         {
             for (int i = 0; i < tomb.Length; i++)
                 if (tomb[i] % n == 0)
+                    return true;
+            return false;
+        }
+
+        static bool VanEnnelEsMmelOszthato(int[] tomb, int n, int m)
+        {
+            for (int i = 0; i < tomb.Length; i++)
+                if (tomb[i] % n == 0 && tomb[i] % m == 0)
                     return true;
             return false;
         }
@@ -60,13 +68,14 @@ namespace programozasitetelek
                 szamok[i] = random.Next(1, 101);
             }
             TombKiir(szamok);
-            Console.WriteLine("Adj egy számot!");
-            int oszto = int.Parse(Console.ReadLine());
+            Console.WriteLine("Adj két számot!");
+            int oszto1 = int.Parse(Console.ReadLine());
+            int oszto2 = int.Parse(Console.ReadLine());
 
-            if(VanEnnelOszthao(szamok, oszto))
-                Console.WriteLine("Van a tömbben {0}-mal osztható szám.", oszto);
+            if(VanEnnelEsMmelOszthato(szamok, oszto1, oszto2))
+                Console.WriteLine("Van a tömbben {0}-mal és {1}-val osztható szám.", oszto1, oszto2);
             else
-                Console.WriteLine("Nincs a tömbben {0}-mal osztható szám.", oszto);
+                Console.WriteLine("Nincs a tömbben {0}-mal és {1}-val osztható szám.", oszto1, oszto2);
 
             Console.ReadKey();
         }
